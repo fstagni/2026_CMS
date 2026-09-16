@@ -9,7 +9,7 @@ theme: neversink
 neversink_string: "DIRAC+X"
 ---
 
-# DIRAC, but mostly DiracX, for Workflow Management
+# What is going on with DiracX
 
 <br>
 
@@ -19,8 +19,9 @@ DiracGrid technical coordinator. CERN employee since 2009. Also part of LHCb.
 
 <br>
 
-14 May 2026
-\_\_ <a href="https://indico.fnal.gov/event/73933" class="ns-c-iconlink"><mdi-open-in-new />Scientific Workflow Management Cross-Experiment Retreat at the LPC</a>
+21 September 2026
+\_\_ <a href="https://indico.cern.ch/event/1612911/#6-dirac-x-plans-and-architectu" class="ns-c-iconlink"><mdi-open-in-new />CMS Autumn O&C Week
+</a>
 
 ---
 layout: section
@@ -103,7 +104,7 @@ columns: is-4
 - Right now it can do few things, with the bulk of the operations still done by DIRAC.
 
 <AdmonitionType type='important' >
-Still DIRAC, in terms of functionalities.
+A DIRAC++, in terms of functionalities.
 </AdmonitionType>
 
 
@@ -111,7 +112,7 @@ Still DIRAC, in terms of functionalities.
 ---
 layout: top-title-two-cols
 color: gray-light
-align: cm-cm-lm
+align: cm-lm-lm
 title: who
 ---
 
@@ -121,9 +122,18 @@ title: who
 
 :: left ::
 
-(A. Tsaregorotsev)
+- Multi-VO installation:
+  - GridPP
+  - EGI
+  - IHEP (Juno)
+  - JINR
+  - France-Grilles
+  - CLIC (including FCC)
 
-![Users](/public/images/Andrei_communities.png)
+- Single-VO installations:
+  - LHCb
+  - CTAO
+  - Belle2
 
 :: right ::
 
@@ -135,7 +145,7 @@ The [**DIRAC Consortium**](https://diracgrid.org/consortium.html) was created in
 
 <br>
 
-Dirac is on track to become an [HSF affiliated project](https://hepsoftwarefoundation.org/projects/affiliated.html).
+Dirac is an [HSF affiliated project](https://hepsoftwarefoundation.org/projects/projects.html).
 
 ---
 layout: top-title
@@ -299,7 +309,7 @@ flowchart TD
 </template>
 <template #3>
 
-# **Belle2**, and **CTAO**
+# **Belle2**, **CTAO**, and **FCC**
 
 <br>
 <br>
@@ -436,7 +446,7 @@ flowchart TD
 ```
 
 <SpeechBubble position="r" color='amber' shape="round"  v-drag="[200,320,400,120]">
-I am here because CMS reviewed Dirac and has serious interests in using it as Workflow Management of choice for Run4.
+I am here because CMS reviewed Dirac and chose it as its Workflow Management of choice for Run4.
 </SpeechBubble>
 
 
@@ -462,38 +472,10 @@ title: whodoeswhat
   - EGI, GridPP, and other DIRAC installations are each used by a dozen VOs.
 - Each installation has **admins** taking care of installations/updates etc. They are not necessarily the main operators of the installation (which are normally part of a VO).
 - **Developers** are whoever care about developing and maintaining the system.
-  - Members of LHCb, CTAO, GridPP, EGI, Belle2, FG, ILC all contributes or have contributed to it
+  - Members of LHCb, CTAO, GridPP, EGI, Belle2, FG, ILC, FCC **and now CMS** all contributes or have contributed to it
   - LHCb maintains the highest concentration of core developers
-- Current **coordinators** are Andrei Tsaregorodtsev (mostly non-technical) and Federico Stagni (technical). (re-)Elections happen 2 years.
+- Current **coordinators** are Andrei Tsaregorodtsev (mostly non-technical) and Federico Stagni (technical). (re-)Elections happen every 2 years.
 
-
----
-layout: top-title
-color: gray-light
-align: cm
-title: adminsflow
----
-
-:: title ::
-
-# Channeling Information
-
-:: content ::
-
-Apart from GitHub notifications, we use:
-
-<br>
-
-2 ML:
-- For admins: diracproject-admins@cern.ch (1 or 2 admins per installation)
-- For (power) users: diracproject-users@cern.ch 
-
-<br>
-
-We maintain a [team on CERN mattermost](https://mattermost.web.cern.ch/diracx/) with few mattermost channels, e.g.:
-- For developments: https://mattermost.web.cern.ch/diracx/channels/developments-and-certifications
-- For Rucio/Dirac: https://mattermost.web.cern.ch/diracx/channels/rucio---dirac 
-- For "everything else", including most of the announcements: https://mattermost.web.cern.ch/diracx/channels/town-square
 
 ---
 layout: top-title
@@ -511,75 +493,12 @@ title: devflow
 We use SCRUM.
 
 1. The **Product Owner(s)** send a mail to diracproject-admins@cern.ch about topic X (anyone in the ML is effectively a product owner).
-2. The technical coordinator collects/arranges the **user stories** which are written down in an "epic" issue on GitHub.
-3. (Core) developers propose a **development plan** (on github), with follow-up on GitHub and/or in meetings.
-4. **Tasks** are written. Coding starts. Anyone in the developers' pool can take up (or asked to take up) any of the tasks.
-5. Follow-ups in [this board](https://github.com/orgs/DIRACGrid/projects/30/views/1), 2-weeks-long sprints.
-6. System tests can be done on the [Dirac certification setup](https://github.com/DIRACGrid/DIRAC/wiki/Certifications).
-
-
----
-layout: top-title
-color: gray-light
-align: cm
-title: hackathons
----
-
-:: title ::
-
-# Getting together
-
-:: content ::
-
-### [**Meetings**](https://indico.cern.ch/category/20884/) (at CERN, and on Zoom):
-- every Thursday morning, 10:00 CERN time, a "Ddev" meeting of 1 hour takes place
-  - Hosted by the SCRUM master (Alexandre Boyer).
-- every 4 to 5 weeks, a "Dops" meeting of 1 hour takes place just before the Ddev.
-  - Hosted by the technical coordinator. A more high-level view meeting, targeted at admins.
-
-
-### [**Hackathons and Workshops**](https://indico.cern.ch/category/20884/)
-
-- We organize **4 hackathons per year**. 2 days, and normally: 3 of them are at CERN, 1 during the workshop.
-  - Next hackathon: 1-2 July, at CERN -- https://indico.cern.ch/event/1668629/
-- Next **workshop**: 13-16 October, FZU, Prague -- https://indico.cern.ch/e/duw12 
-  - registrations are open!
-
----
-layout: top-title
-color: gray-light
-align: cm
-title: question
-clicks: 1
----
-
-:: title ::
-
-# The question, for this WS
-
-:: content ::
-
-
-<v-switch>
-<template #0>
-
-<span class="bg-red-200 text-cyan-800 p-10 border-l-6 border-2 border-black-800 rounded-lg pl-16 pr-16 w-2/3 block mr-auto mt-20">
-DiracX Workflow Orchestration: what, and how?
-</span>
-
-</template>
-<template #1>
-
-<span class="bg-red-200 text-cyan-800 p-10 border-l-6 border-2 border-black-800 rounded-lg pl-16 pr-16 w-2/3 block mr-auto mt-20">
-DiracX Workflow Orchestration: what, and how?
-</span>
-
-<span class="bg-red-200 text-cyan-800 p-10 border-l-6 border-2 border-black-800 rounded-lg pl-16 pr-16 w-1/3 block ml-auto mb-40">
-and when?
-</span>
-
-</template>
-</v-switch>
+2. The technical coordinator collects/arranges the **user stories** which can be written down in an "epic" issue on GitHub.
+3. Core developers write down Architecture Design Records (ADR).
+4. (Core) developers propose a **development plan** (on github), with follow-up on GitHub and/or in meetings.
+5. **Tasks** are written. Coding starts. Anyone in the developers' pool can take up (or asked to take up) any of the tasks.
+6. Follow-ups in [this board](https://github.com/orgs/DIRACGrid/projects/30/views/1), 2-weeks-long sprints. Checkpoint meetings every Thursday.
+7. System tests can be done on the [Dirac certification setup](https://github.com/DIRACGrid/DIRAC/wiki/Certifications).
 
 
 ---
@@ -774,106 +693,6 @@ One functionality at a time, we'll eventually migrate all from DIRAC to DiracX.
 The priorities for the developments are discussed collectively
 </SpeechBubble>
 
-
----
-layout: top-title
-align: c
-color: gray-light
-title: DiracX tech
----
-
-
-:: title ::
-
-# Technicalities of DiracX
-
-:: content :: 
-
-<ul class="text-sm">
-  <li>DiracX is written in python 3</li>
-  <li>REST APIs <a href="https://diracx.diracgrid.org/en/latest/dev/explanations/components/routes/" class="ns-c-iconlink"><mdi-open-in-new />developed with FastAPI</a></li>
-  <li>DiracX <a href="https://diracx.diracgrid.org/en/latest/admin/explanations/tasks/" class="ns-c-iconlink"><mdi-open-in-new />tasks</a> use Redis as backend</li>
-  <li><a href="https://diracx.diracgrid.org/en/latest/admin/how-to/install/installing/" class="ns-c-iconlink"><mdi-open-in-new />Deployment</a> via Kubernetes (charts provided) or with containers</li>
-  <li>The <a href="https://diracx.diracgrid.org/en/latest/dev/explanations/web-architecture/" class="ns-c-iconlink"><mdi-open-in-new />Web App is implemented in TypeScript, and React</a>. At the moment using NextJS, planning to move to Vite</li> 
-  <li>The transaction databases (MySQL and OpenSearch) are shared with DIRAC</li>
-  <li>For its <a href="https://diracx.diracgrid.org/en/latest/admin/explanations/auth-with-diracx/" class="ns-c-iconlink"><mdi-open-in-new />internal AuthN/Z</a>, JWT tokens are used
-    <ul class="text-xs">
-      <li>you will of course need to be registered in an IdP if you want to access the Grid, but DiracX has its own tokens. Link to <a href="https://diracx.diracgrid.org/en/latest/admin/reference/security_model/" class="ns-c-iconlink"><mdi-open-in-new />Security model</a></li>
-    </ul>
-  </li>
-</ul>
-
-
----
-layout: top-title-two-cols
-color: gray-light
-align: c-lm-lm
-title: chart
----
-
-:: title :: 
-
-# DiracX: the Helm Chart <devicon-helm class="text-3xl align-middle inline-block mx-0"></devicon-helm>
-
-:: left ::
-
-The first thing an admin have to look at is the provided [Helm chart](https://github.com/DIRACGrid/diracx-charts), for which there is a [Unique pointer](https://charts.diracgrid.org/index.yaml)
-
-<ul class="text-sm">
-  <li>Effectively the chart is used also for:
-    <ul>
-      <li>DiracX testing (GitHub actions)</li>
-      <li>Local development</li>
-      <li>Running a demo instance</li>
-      <li>Running test and productions instances</li>
-    </ul>
-  </li>
-</ul>
-
-
-DiracX can also be deployed simply with with containers. Its documentation is right now in a PR.
-
-:: right ::
-
-<AdmonitionType type="info" width="300px">
-The helm charts provide everything, including MySQL and Opensearch, and iam. 
-This is intended for local development, not for production.
-</AdmonitionType>
-
-<AdmonitionType type="important" width="300px">
-As admin, you will need to create *your* helm chart with what you want to run in production
-</AdmonitionType>
-
-CTAO has [developed a HELM chart with both DIRAC and DiracX in it](http://cta-computing.gitlab-pages.cta-observatory.org/dpps/dpps/latest/developer-guide.html)
-
----
-layout: side-title
-color: gray-light
-title: Externals
-align: cm-lm
-titlewidth: is-2
----
-
-
-:: title ::
-
-# DiracX: necessary tools
-
-:: content ::
-
-As of today, you can't run DiracX without these services:
-<ul class="text-sm">
-  <li>MySQL (or MariaDB) (needed for DIRAC)</li>
-  <li>OpenSearch (with a request for re-support ElasticSearch) (needed for DIRAC)</li>
-  <li>S3-compatible object store for storing the Job Sandboxes (no need for the Workflow Orchestration) </li>
-  <li>RECOMMENDED: Kubernetes for running DiracX services and tasks</li>
-  <li>a Grafana instance (not immediately, but will be needed)</li>
-  <li>OpenTelemetry (not immediately, but maybe you will want to have it)</li>
-</ul>
-
-<br>
-
-
 ---
 layout: top-title
 color: gray-light
@@ -907,33 +726,6 @@ DiracX can "start", its REST APIs would be responding to queries, all underpinni
 - What about the DiracX Productions (the "Workflow Orchestration" system)?
 
 In development. And yes, this in an opportunity!
-
-
-
----
-layout: top-title
-align: c
-color: gray-light
-title: DiracXTS 
----
-
-
-:: title ::
-
-# DiracX production system (workflow system)
-
-:: content :: 
-
-In general, there are still several things to decide. I believe that, at a minimum:
-- the current DIRAC Transformation System will serve as base.
-- Several of the goodies from LHCb DIRAC Analysis Productions system will be integrated in the DiracX Production (Workflows) system.
-  - you hears about them yesterday in Ryunosuke's presentation
-- We will use CWL for describing production requests and transformations.
-
-<br>
-<br>
-
-This is a good time to inject (your!) requirements.
 
 
 ---
@@ -980,27 +772,6 @@ We provide a reference implementation of an extension (dubbed "Gubbins").
 
 
 ---
-layout: iframe-right
-title: multi-VO
-url: https://diracx.diracgrid.org/en/latest/admin/how-to/install/register-a-vo/
-class: webAPI
-slide_info: false
-color: gray-light
-align: lm
----
-
-# Multi-VO DiracX
-
-DIRAC is often operated as a multi-VO instance. This is the case for most of the VOs using DIRAC (you have seen this is the case also for FCC).
-
-Especially useful for small-to-medium size VOs, which usually just need basic functionalities ("I just want to submit jobs"). Often these installations do not provide production system functionalities.
-
-DiracX is multi-VO from the get-go.
-(the frame on the right is [pointing to](https://diracx.diracgrid.org/en/latest/admin/how-to/install/register-a-vo/) related DiracX documentation)
-
-
-
----
 layout: top-title-two-cols
 align: cm-cm-lm
 color: orange-light
@@ -1022,8 +793,6 @@ In general, DIRAC has a very active community of users and developers.
 - DiracX is "the neXt Dirac incarnation", ensuring the future of the widely used DIRAC.
   - It will live together with DIRAC v9 for a while, until it will replace it completely
   - It's developed by a superset of the current DIRAC developers
-- DiracX production system is "not yet there", but DIRAC's one is. We (think we) know how to make it
-  - All DiracX users are invited to participate to it
 
 
 ---
@@ -1087,193 +856,6 @@ title: Backup
 ---
 
 # Backup
-
-
----
-layout: top-title-two-cols
-color: gray-light
-align: c-lm-lm
-title: dirac
-columns: is-5
----
-
-:: title ::
-
-# DiracX and heterogeneous slots
-
-:: left ::
-
-- Nowadays *Dirac(X) can take a node consisting of several CPUs and partition it*. CPUs only.
-- The **match-making** process (the process of matching job needs to job slots capabilities) can use a very simple system for tagging slots including GPUs. This is not fully applicable for heterogeneous nodes.
-
-:: right ::
-
-Would not be able to fully exploit nodes like this:
-
-<div class7="relative">
-  <img src="/public/images/lumig-overview.svg" class="w-full" />
-
-  <div class="absolute bottom-0 right-0 text-xs text-gray-500">
-    Source: https://docs.lumi-supercomputer.eu/hardware/lumig/
-  </div>
-</div>
-
----
-layout: top-title-two-cols
-color: gray-light
-align: c-lm-lm
-title: diracx
-columns: is-5
----
-
-:: title ::
-
-# DiracX and heterogeneous slots (cont)
-
-:: left :: 
-
-In the context of DiracX, LHCb is working on:
-
-- Using CWL for jobs and workflow description
-
-![](/public/images/CWL1.png)
-
-:: right ::
-
-![](/public/images/diracx-logo-full-transparent-background.png)
-
-- A realistic **slot description for heterogeneous architectures**
-- An advanced jobs match-making
-- "Solving" the general case of **whole node scheduling**: whole-node scheduling and benchmarking seem to be the best way forward.
-
-
----
-layout: side-title
-align: lm-lm
-color: gray-light
-title: WMS
-titlewidth: is-3
----
-
-:: title ::
-
-## Workload Management System
-- Pull model based on Pilot jobs
-- Also "Push" solution for HPCs that do not support pilots (because of limited internet access).
-- Will integrate [CWL (Common Workflow Language)](https://www.commonwl.org) as a way of defining jobs (replacing JDL)
-
-:: content ::
-
-```mermaid
-%%{init: { 'theme': 'default' }}%%
-flowchart LR;
-Jobs["`Users see only **Jobs**`"]
-A@{ shape: sl-rect, label: "APIs" }
-WMS[("`**Workload
-Management
-System**`")]
-style WMS fill:#bbf
-HPC["`High
-Perfomance
-Computers`"]
-style HPC fill:#A145
-clusters["`Computer clusters`"]
-style clusters fill:#A145
-Grid_Nodes["Grid"]
-Pilots["`**Pilots**
-administer computing slots, and match (pull) jobs`"]
-
-style HTCondorCE fill:#F23A
-style ARC-AREX fill:#F23A
-style libcloud fill:#F23A
-style SSH fill:#F23A
-style Grid_Nodes fill:#A145
-style Iaas:Clouds fill:#A145
-style HTCondor fill:#F26
-style SLURM fill:#F26
-style Jobs fill:#FFF
-style Pilots fill:#FFF
-
-A-->|jobs|WMS
-
-WMS-->|pilots|libcloud
-WMS-->|pilots|HTCondorCE
-WMS-->|pilots|ARC-AREX
-WMS-. jobs .->HPC
-WMS-->|pilots|SSH
-
-libcloud-->|VMs starting pilots|Iaas:Clouds
-HTCondorCE-->Grid_Nodes
-ARC-AREX-->Grid_Nodes
-ARC-AREX-->HPC
-SSH-->|pilots|SLURM
-SSH-->|pilots|HTCondor
-SSH-->|pilots|clusters
-SLURM-->HPC
-SLURM-->clusters
-HTCondor-->clusters
-```
-
----
-layout: side-title
-align: lm-lm
-color: gray-light
-titlell: DMS
-titlewidth: is-5
----
-
-:: title ::
-
-## Data Management System
-It’s about **files**:​ placing, replicating, removing files​
-
-- there are **LFNs** (logical file names)
-- **LFNs** are registered in *catalog(s)​*
-    - where are the LFNs? (in the DIRAC File Catalog (DFC), or in Rucio)​
-    - where are their metadata? (in the DFC, or in the LHCb Bookkeeping, or in AMGA)​
-- LFNs *may* have **PFNs** (physical file names), stored in **SEs** (Storage Elements), that can be accessed with several protocols.​
-
-:: content ::
-
-```mermaid
-%%{init: { 'theme': 'default' }}%%
-flowchart LR;
-A@{ shape: sl-rect, label: "APIs" }
-DMS[("`**Data
-Management
-System**`")]
-style DMS fill:#bbf
-FC[["`**Catalog**`"]]
-style FC fill:#bbf
-StorageBase[["`**Storage Base**`"]]
-style StorageBase fill:#bbf
-DFC[("`DIRAC
-Files
-Catalog`")]
-Rucio[("Rucio")]
-style Rucio fill:#6001
-TS[("`DIRAC
-Transformation
-System`")]
-WebDav@{ shape: lin-cyl, label: "WebDav (http)" }
-XRootD@{ shape: lin-cyl, label: "XRootD" }
-
-style WebDav fill:#F23A
-style XRootD fill:#F23A
-
-A-->DMS
-DMS-->FC
-DMS-->StorageBase
-FC-->DFC
-FC-->Rucio
-FC-->TS
-StorageBase-->WebDav
-StorageBase-->XRootD
-```
-
-<!-- 
-A catalog is effectively an interface, that needs implementation. Such implementation can be the DIRAC Files Catalog, or Rucio, or any other, including extension specific ones
--->
 
 ---
 layout: top-title
