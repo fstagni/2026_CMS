@@ -22,9 +22,9 @@
   "homepage": "https://github.com/fstagni/2026_FermiLab_retreat#readme",
   "description": "",
   "dependencies": {
-    "slidev-theme-neversink": "^0.4.1"
+    "slidev-theme-neversink": "^0.4.0"
   },
   "devDependencies": {
-    "@slidev/cli": "^52.15.0"
+    "@slidev/cli": "^52.9.1"
   }
 }
