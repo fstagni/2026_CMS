@@ -98,9 +98,10 @@ columns: is-4
 
 <img id="DIRAC" src="/public/images/diracx-logo-full-transparent-background.png" class="mx-auto w-2/5"> </img>
 
-- "The neXt DIRAC incarnation", a complete rewrite aiming at fully replacing DIRAC. A cloud native app, multi-VO from the get-go, standards-based. [CHEP24 presentation](https://indico.cern.ch/event/1338689/contributions/6010971/).
+- "The neXt DIRAC incarnation", a complete rethink+rewrite, aiming at fully replacing DIRAC. A cloud native app, multi-VO from the get-go, standards-based. [CHEP24 presentation](https://indico.cern.ch/event/1338689/contributions/6010971/).
   - Younger, faster, better, stronger.
 - Used **in production** by LHCb, with few others getting there.
+  - DiracX complements DIRAC: LHCb runs both, with DIRAC using DiracX functionalities as much as possible.
 - Right now it can do few things, with the bulk of the operations still done by DIRAC.
 
 <AdmonitionType type='important' >
@@ -139,13 +140,13 @@ title: who
 
 ## Legally
 
-The [**DIRAC Consortium**](https://diracgrid.org/consortium.html) was created in February 2014 to support development and promotion of the DIRAC software.
+The [**DiracGrid Consortium**](https://diracgrid.org/consortium.html) was created in February 2014 to support development and promotion of the DIRAC software.
 
 
 
 <br>
 
-Dirac is an [HSF affiliated project](https://hepsoftwarefoundation.org/projects/projects.html).
+DiracGrid is an [HSF affiliated project](https://hepsoftwarefoundation.org/projects/projects.html).
 
 ---
 layout: top-title
@@ -508,7 +509,7 @@ title: Dirac(X) and Workflows
 ---
 
 # Dirac(X) and Workflows
-## (the "Production System")
+## (the "Transformation System")
 
 
 ---
