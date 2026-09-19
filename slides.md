@@ -4,12 +4,12 @@ favicon: /public/images/diracx-logo-square.png
 color: orange-light
 layout: cover
 routerMode: hash
-title: DIRAC, but mostly DiracX, for Workflow Management
+title: The DiracGrid project, DiracX and CMS
 theme: neversink
 neversink_string: "DIRAC+X"
 ---
 
-# What is going on with DiracX
+# The DiracGrid project, DiracX, and CMS
 
 <br>
 
@@ -143,6 +143,7 @@ title: who
 The [**DiracGrid Consortium**](https://diracgrid.org/consortium.html) was created in February 2014 to support development and promotion of the DIRAC software.
 
 
+Current **coordinators** are Andrei Tsaregorodtsev (mostly non-technical) and Federico Stagni (technical). (re-)Elections happen every 2 years.
 
 <br>
 
@@ -459,24 +460,34 @@ I am here because CMS reviewed Dirac and chose it as its Workflow Management of 
 layout: top-title
 color: gray-light
 align: cm
-title: whodoeswhat
+title: CMSDiracX
 ---
 
 :: title ::
 
-# Users, VOs (communities), admins, developers, and coordinator(s)
+# CMS and <strike>DIRAC</strike> &rarr; DiracX 
 
 :: content ::
 
-- The end **users** are VOs users. Admins of the DIRAC/DiracX installations engage with them.
-- A single DIRAC/DiracX installation can be used by several **VOs**.
-  - EGI, GridPP, and other DIRAC installations are each used by a dozen VOs.
-- Each installation has **admins** taking care of installations/updates etc. They are not necessarily the main operators of the installation (which are normally part of a VO).
-- **Developers** are whoever care about developing and maintaining the system.
-  - Members of LHCb, CTAO, GridPP, EGI, Belle2, FG, ILC, FCC **and now CMS** all contributes or have contributed to it
-  - LHCb maintains the highest concentration of core developers
-- Current **coordinators** are Andrei Tsaregorodtsev (mostly non-technical) and Federico Stagni (technical). (re-)Elections happen every 2 years.
+CMS decided (and has also been advised to) skip DIRAC, and go straight to DiracX.
 
+<br>
+
+<AdmonitionType type='note' >
+As of today, DiracX is not handling workflows, productions, transformations: these functionalities will be built in DiracX in the months to come. 
+</AdmonitionType>
+
+<SpeechBubble position="t" color="red" shape="round" maxWidth="500px" v-drag="[225,261,500,102]">
+This is an opportunity! We are building the next-generation workflow and production system together
+</SpeechBubble>
+
+---
+layout: section
+color: cyan-light
+title: Developments
+---
+
+# Developments
 
 ---
 layout: top-title
@@ -491,256 +502,266 @@ title: devflow
 
 :: content ::
 
-We use SCRUM.
-
 1. The **Product Owner(s)** send a mail to diracproject-admins@cern.ch about topic X (anyone in the ML is effectively a product owner).
 2. The technical coordinator collects/arranges the **user stories** which can be written down in an "epic" issue on GitHub.
 3. Core developers write down Architecture Design Records (ADR).
-4. (Core) developers propose a **development plan** (on github), with follow-up on GitHub and/or in meetings.
+4. (Core) developers propose a **development plan** (on github), with follow-up on GitHub and/or in meetings. From here-on we use SCRUM.
 5. **Tasks** are written. Coding starts. Anyone in the developers' pool can take up (or asked to take up) any of the tasks.
 6. Follow-ups in [this board](https://github.com/orgs/DIRACGrid/projects/30/views/1), 2-weeks-long sprints. Checkpoint meetings every Thursday.
 7. System tests can be done on the [Dirac certification setup](https://github.com/DIRACGrid/DIRAC/wiki/Certifications).
 
 
 ---
-layout: section
-color: cyan-light
-title: Dirac(X) and Workflows
+layout: top-title
+color: gray-light
+align: cm
+title: CMScontribs
 ---
 
-# Dirac(X) and Workflows
-## (the "Transformation System")
+:: title ::
+
+# CMS contributions
+
+:: content ::
+
+plots
 
 
 ---
 layout: top-title
 color: gray-light
 align: cm
-title: Concepts
+title: DevsStatus
 ---
 
 :: title ::
 
-# DIRAC Concepts
+# Developments status
 
 :: content ::
 
-| **Dirac Name** | **AKA** | **Description** | **Example** |
-|------------|----------------|-------------|---------|
-| Production Request | Workflow | A full fledged processing, with several definitions of payloads | DataReconstruction |
-| Transformation | Work Queue Unit | A unit of the production request, each might run more then 1 payload definition | Merge |
-| Transformation Inputs | Rucio Container | The list of LFNs in input to a transformation | `[lfn_1, lfn_2, ... , lfn_534]` |
-| Transformation Plugin | ? | The policy for creating tasks | ByRun |
-| Task | | A proto-job, pushed to the WMS | Type:`Merging`,Inputs:`[lfn_1, lfn_2]`,Payload_id:`123` | 
+While there are currently several commits to the repositories, the bulk of "interesting" developments (especially for CMS) are on-hold.
 
-
-
----
-layout: top-title
-color: gray-light
-align: cm
-title: PMS
----
-
-:: title ::
-
-## DIRAC Production Requests
-
-container of steps
-
-:: content ::
-
-With a *step* being the description of a payload (which application, version, options, ...)
+The workflow/production/transformation system has been (for the past months) and will keep being (for the months to come) the subject of the development process. Right now, we are waiting for Architecture Design Records describing it.
 
 <br>
 <br>
-
-```mermaid
-%%{init: { 'theme': 'default' }}%%
-flowchart LR
-  metaquery@{ shape: manual-input, label: "Transformation Inputs Query, (Rucio DataSets)" }
-
-  subgraph Production Request
-    direction LR 
-    subgraph transformation_1
-      direction TB
-      step_1-->step_2
-    end
-    subgraph transformation_2
-      step_3
-    end
-    step_2-->step_3
-    metaquery-->|inputs| transformation_1
-    transformation_1 -->|outputs of 1 as inputs to 2| transformation_2 
-  end
-```
-
----
-layout: top-title
-color: gray-light
-align: cm
-title: WFS
----
-
-:: title ::
-
-# Putting everything together
-
-:: content ::
-
-```mermaid
-%%{init: { 'theme': 'default' }}%%
-flowchart LR
-    subgraph Production Request X
-    direction LR 
-      subgraph transformation_1
-        direction TB
-        step_1-->step_2
-      end
-      subgraph transformation_2
-        step_3
-      end
-    inputs_t1@{ shape: docs }
-    outputs_t1@{ shape: docs }
-    outputs_t2@{ shape: docs }
-    transformation_plugin_1@{ shape: braces }
-    transformation_plugin_2@{ shape: braces }
-    tasks_t1@{ shape: procs }
-    tasks_t2@{ shape: procs }
-    inputs_t1 --> transformation_1 --> tasks_t1 --> outputs_t1 --> transformation_2 --> tasks_t2 --> outputs_t2
-    transformation_plugin_1 --> transformation_1
-    transformation_plugin_2 --> transformation_2
-  end
-  tasks_t1 --> WMS
-  tasks_t2 --> WMS
-```
-
-
-- DIRAC's transformations can be chained one to the other
-- The DIRAC production system links them together
-- DiracX "Production System" will be an evolution of the DIRAC's one
-
-
----
-layout: top-title
-color: gray-light
-align: cm
-title: WFS-VO
----
-
-:: title ::
-
-# The VO's policies 
-
-:: content ::
-
-A very important concept of DIRAC is its extensibility. Its primary goal is to accommodate VO specificities.
-
-There are VO specific policies.
-VO specific policies descend for VO specific concepts, e.g. a physics "fill", or "run", or "portion of the sky". They *should* live in a VO extension.
-
-Examples:
-- Pretty much everything through which you describe your data, and that you want to use for creating tasks through transformation plugins
-- Workflow modules (you want your jobs to run something specific before, during or after the payloads)
-- Access to specific services or databases
-
----
-layout: section
-color: lime-light
----
-
-<div style="display: flex; align-items: center; justify-content: center;">
-    <img id="DIRAC" src="/public/images/DIRAC-logo-extended.png" alt="DIRAC logo" style="width: 300px;">
-    <span style="margin: 0 50px;">--></span>
-    <img id="DiracX" src="/public/images/diracx-logo-full-transparent-background.png" alt="DiracX" style="width: 300px;">
-</div>
-
-
----
-layout: top-title
-color: gray-light
-align: c
-title: points
----
-
-:: title ::
-
-# Notable points
-
-:: content ::
-
-DiracX is developed on a daily base.
-
-So is DIRAC, but for DIRAC we do only fixes, and minor features. 
-
-<br>
-<br>
-
 
 <AdmonitionType type='note' >
-There are several communities using DIRAC right now. Their business continuity is our top priority.
+The good news: there are 6 upcoming ADRs, which we will submit for review early next week:
 </AdmonitionType>
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADRs
+---
+
+:: title ::
+
+# Upcoming ADRs
+
+:: content ::
+
+  - DX-ADR-002: Transformation System overview
+  - DX-ADR-003: Compute backends
+  - DX-ADR-004: Transformation System database schema
+  - DX-ADR-005: Transformation System state machines
+  - DX-ADR-006: Transformation System extension points
+  - DX-ADR-007: CWL specification
+
+All of them have been the result of many weeks of work. The **main architects**: *Christopher Burr* and *Christophe Haen*.
+
+In the next slides I will go through few **notable points**
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADR2
+---
+
+:: title ::
+
+# DX-ADR-002: Transformation System overview
+
+:: content ::
+
+Describes the overall **model** and fixes the **vocabulary** used by the five companion ADRs.
+
 
 <AdmonitionType type='important' >
-DIRAC and DiracX will live together for a while
+For this presentation I will mostly cover this one. The specifics live in the five companion ADRs.
 </AdmonitionType>
 
-<AdmonitionType type='info' >
-One functionality at a time, we'll eventually migrate all from DIRAC to DiracX.
-</AdmonitionType>
+<br>
 
+**This is what you should read first**, and *if you are not a developer, you can stop at this one*. 
 
-<SpeechBubble position="t" color='cyan' shape="round"  v-drag="[300,415,550,60]">
-The priorities for the developments are discussed collectively
-</SpeechBubble>
+<br>
+
+The DiracX Transformation System covers the ground of two DIRAC systems (the Transformation System and the Production System) as well as "job" part of the workload management system. 
 
 ---
 layout: top-title
 color: gray-light
-align: c
-title: FAQ
+align: cm
+title: ADR2-2
 ---
 
 :: title ::
 
-# Status of DIRAC to DiracX migration 
+# DX-ADR-002: Transformation System overview
 
 :: content ::
 
-<br>
-- Nowadays, what's DiracX used for?
+The most important concepts are **workgraph** and **transformations**
 
-DiracX currently handles few notable tasks for which scalability was a concern in DIRAC.
+<AdmonitionType type='important' >
+A workgraph is a directed acyclic graph of transformations. It is what DIRAC called a production, and CMS a workflow.
+</AdmonitionType>
 
-<br>
-- Can I use DiracX without DIRAC?
+Each transformation maintains a pool of **inputs**: a **feeder** tops up the pool from the experiment's metadata catalogue, a **packer** groups pooled inputs into **parcels**, and a **dispatcher** hands each parcel to a **compute** or **data backend**, which executes it as a **job** or a **request**. A workgraph is written as a CWL document (DX-ADR-007): its dataflow declares how transformations chain, and inputs arriving from outside the workgraph carry the metadata queries that tell the feeder what to fetch.
 
-ATM, no, simply because DiracX has few features at the moment, and those are there to work together with DIRAC. 
-DiracX can "start", its REST APIs would be responding to queries, all underpinnings ready...
 
-<br>
-- When will it work without DIRAC?
+```mermaid
+flowchart LR
+    subgraph WG [Workgraph]
+      direction LR
+      T1[Compute transformation<br/>simulate] --> T2[Compute transformation<br/>reconstruct]
+      T2 --> T3[Data transformation<br/>replicate]
+    end
+    Cat[(Metadata<br/>catalogue)] -. feeder .-> T1
+    T2 -. edge feeder .-> T3
+```
 
-...It depends! from what you want it to do.
 
-<br>
-- What about the DiracX Productions (the "Workflow Orchestration" system)?
 
-In development. And yes, this in an opportunity!
 
 
 ---
 layout: top-title
 color: gray-light
-align: cm 
-title: DiracXWMS
+align: cm
+title: ADR2-3-1
 ---
 
 :: title ::
 
-# CWL for DiracX
+# DX-ADR-002: TS overview: concepts
 
 :: content ::
+
+| Concept                                         | Term                       | One-line definition                                                                                                                             |
+| ----------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Stage of a campaign                             | **Transformation**         | Applies one operation to a pool of inputs, in units of parcels. **Compute Transformation** parcels become jobs                                                                                  |
+| Unit of processable input                       | **Input**                  | Usually a file (LFN), possibly a fraction of one, possibly not a file at all (a seed, a parameter set)                                          |
+| Dispatched unit of work                         | **Parcel**                 | An immutable, non-retryable unit of dispatched work: a user job, or a bundle of transformation inputs                                           |
+| Compute execution                               | **Job**                    | A CWL process run through the DiracX job wrapper                                                                                                |
+| Recipe for one job                              | **Process**                | A content-addressed CWL `Process`: a `CommandLineTool` or a `Workflow` (see DX-ADR-007)                                                         |
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADR2-3-2
+---
+
+:: title ::
+
+# DX-ADR-002: TS overview: concepts
+
+:: content ::
+
+| Concept                                         | Term                       | One-line definition                                                                                                                             |
+| ----------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Feeds the input pool                            | **Feeder**                 | Evaluates the input source (a metadata query, upstream outputs, a generator), injects new inputs                                                |
+| Groups inputs into parcels                      | **Packer**                 | Decides when and how to make parcels                                                                                                            |
+| Runs parcels                                    | **Compute backend** | Submits, monitors, retrieves (see DX-ADR-003)                                                                                                   |
+| Connects a parcel to its backend                | **Dispatcher**             | Routes an `Unassigned` parcel to its backend and drives submission, materialising its payload on the way (see DX-ADR-003)                       |
+| Turns references and defaults into runnable CWL | **Resolution layer**       | Resolves stored-process references and configuration defaults at dispatch, and `lfn:`/`sandbox:` references in the job wrapper |
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADR3
+---
+
+:: title ::
+
+# DX-ADR-003: Compute backends
+
+:: content ::
+
+Describes t
+
+DIRAC never considered to have different compute backends. The requirement came from CMS.
+Diracx is now using this concept for easing the transition from DIRAC, as the DIRAC WMS will be an implementation of compute backend like HTCondor.
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADR4
+---
+
+:: title ::
+
+# DX-ADR-004: Transformation System database schema
+
+:: content ::
+
+Describes t
+
+
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADR5
+---
+
+:: title ::
+
+# DX-ADR-005: Transformation System state machines
+
+:: content ::
+
+Describes t
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADR6
+---
+
+:: title ::
+
+# DX-ADR-006: Transformation System extension points
+
+:: content ::
+
+Describes t
+
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADR7
+---
+
+:: title ::
+
+# DX-ADR-007: CWL specification
+
+:: content ::
+
+Reminders:
 
 <div class="flex justify-center gap-4">
   <img src="/public/images/CWL1.png" class="w-1/2 object-contain" />
@@ -748,28 +769,69 @@ title: DiracXWMS
   <img src="/public/images/CWL3.png" class="w-1/4 object-contain" />
 </div>
 
-We have been recently tested the first [CWL jobs](https://github.com/DIRACGrid/diracx/issues/858). Next, we will look into describing `Transformation` and `Production` through CWL hints.
-
 <SpeechBubble position="t" color='light-red' shape="round"  v-drag="[400,440,480,90]">
-  Main involvements: LHCb, CTAO. CMS should likely get involved here ASAP (now, effectively).
+  Main involvements up to now: LHCb, CTAO. CMS should likely get involved here ASAP (now, effectively).
 </SpeechBubble>
 
 
 ---
-layout: iframe-right
-title: extesion
-url: https://diracx.diracgrid.org/en/latest/dev/explanations/extensions/
-class: webAPI
-slide_info: false
+layout: top-title
 color: gray-light
-align: lm
+align: cm
+title: ADR7
 ---
 
-# DiracX extensions
+:: title ::
 
-A very important concept also for DiracX is its extensibility. Full documentation on the left (pointing [here](https://diracx.diracgrid.org/en/latest/dev/explanations/extensions/))!
+# DX-ADR-007: CWL specification
 
-We provide a reference implementation of an extension (dubbed "Gubbins").
+:: content ::
+
+
+
+```mermaid
+flowchart LR
+    B(CWL Workflow describing the Workgraph)
+    B --> C{The magic TS box}
+    C -->|1| D[CWL workflow describing job 1]
+    C -->|2| E[CWL workflow describing job 2]
+    C -->|n| F[CWL workflow describing job n]
+```
+
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: next
+---
+
+:: title ::
+
+# What's next
+
+:: content ::
+
+- All the ADRs will be submitted for review tomorrow (as Pull Requests on the DiracX repo). Diracgrid admins have been already warned.
+- The review needs to conclude at the [Dirac(X) workshop](https://indico.cern.ch/e/duw12) (13-16 October).
+- The workshop will serve as an occasion to iron the last details, prepare a development plan, and maybe code a few of the tasks. 
+
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: notADR 
+---
+
+:: title ::
+
+# What is **not** in the upcoming ADRs
+
+:: content ::
+
+- The DiracX Data Management system, and/or relation with other data management system(s) (e.g. Rucio)
+- The DiracX pilot, and in general the DiracX WMS
 
 
 ---
@@ -829,7 +891,15 @@ title: credits/people
         Heloise Joffe <i>IN2P3 (FR), France-Grilles</i><br/>
         Stella Maria Renucci <i>LUPM (FR), CTAO</i><br/>
         Mazen Ezzeddine <i>CPPM (FR), EGI</i><br/>
-        Loris vankatwijk <i>LUPM (FR), CTAO</i>
+        Loris vankatwijk <i>LUPM (FR), CTAO</i><br/>
+        Alan Malta<i>Notre Dame university (US), CMS</i><br/>
+        Andrea Piccinelli<i>Notre Dame university (US), CMS</i><br/>
+        Valentin Kuznetsov<i>Cornell University (US), CMS</i><br/>
+        Marco Mascheroni<i>(US), University of California San Diego (US), CMS</i><br/>
+        Todor Ivanov<i>Notre Dame university (US), CMS</i><br/>
+        Francesco Brivio<i>(IT), Milano Bicocca University, CMS</i><br/>
+        Juraj Smiesko<i>(CERN), FCC</i><br/>
+        Benedikt Wach<i>(CERN), FCC</i><br/>
     </div>
     <div class="grid-item text-right mr-4 col-span-1">
         <strong>Project lead</strong>
@@ -902,4 +972,3 @@ title: namespace
 - DIRAC uses a hierarchical namespace
 
 The `RucioFileCatalog` "translates" from DIRAC to Rucio's namespace. All details in [this vCHEP presentation](https://indico.cern.ch/event/948465/contributions/4323983/attachments/2247115/3811355/The%20Rucio%20File%20Catalog%20in%20Dirac%20implemented%20for%20Belle%20II-2.pdf)
-
