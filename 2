@@ -14,13 +14,13 @@ neversink_string: "DIRAC+X"
 
 **Federico Stagni** <Email v="federico.stagni@cern.ch" />
 
-DiracGrid technical coordinator. A CERN employee since 2009. Also part of LHCb.
+DiracGrid technical coordinator. CERN employee since 2009. Also part of LHCb.
 
 <br>
 
 21 September 2026
-<br>
-<a href="https://indico.cern.ch/event/1612911/#6-dirac-x-plans-and-architectu" class="ns-c-iconlink"><mdi-open-in-new />CMS Autumn O&C Week</a>
+\_\_ <a href="https://indico.cern.ch/event/1612911/#6-dirac-x-plans-and-architectu" class="ns-c-iconlink"><mdi-open-in-new />CMS Autumn O&C Week
+</a>
 
 ---
 layout: section
@@ -155,7 +155,7 @@ Old DIRAC was largely monolithic. DiracX emphasizes modularity and well-defined 
 <template #2>
 
 # **LHCb**
-Not a small installation, but the oldest and carrying legacy.
+Not a small installation, but oldest and carrying legacy.
 
 <br>
 <br>
@@ -283,13 +283,8 @@ flowchart TD
     IS -->|implemented by| CRIC
 ```
 
-<SpeechBubble position="t" color='amber' shape="round"  v-drag="[280,400,400,90]">
-I am here because CMS made a review of its Workflow Management
-</SpeechBubble>
-
 </template>
 <template #5>
-
 
 # **CMS**
 For CMS, modularity is a must.
@@ -339,8 +334,8 @@ flowchart TD
     IS -->|implemented by| CRIC
 ```
 
-<SpeechBubble position="r" color='amber' shape="round"  v-drag="[200,390,400,90]">
-And chose DiracGrid as its Workflow Management of choice for Run4.
+<SpeechBubble position="r" color='amber' shape="round"  v-drag="[200,390,400,110]">
+I am here because CMS reviewed DiracGrid and chose it as its Workflow Management of choice for Run4.
 </SpeechBubble>
 
 
@@ -409,7 +404,7 @@ columns: is-4
 <img id="DIRAC" src="/public/images/DIRAC-logo-extended.png" class="mx-auto w-3/5"> </img>
 
 - An "interware" (a tool for doing distributed computing)
-- Today is used **in production** by a few dozen communities
+- Today is used **in production** by few dozens communities
 - It can be used for managing jobs (via pilots), data, productions (workflows), dataset transfers, etc
 - "Legacy"
 
@@ -487,7 +482,7 @@ CMS decided (and has also been advised to) skip DIRAC, and go straight to DiracX
 <br>
 
 <AdmonitionType type='note' >
-As of today, DiracX is not handling workflows, productions, transformations: these functionalities will be built in DiracX in the months to come.
+As of today, DiracX is not handling workflows, productions, transformations: these functionalities will be built in DiracX in the months to come. 
 </AdmonitionType>
 
 <SpeechBubble position="t" color="red" shape="round" maxWidth="500px" v-drag="[225,261,500,102]">
@@ -519,9 +514,66 @@ title: devflow
 2. The technical coordinator collects/arranges the **user stories** which can be written down in an "epic" issue on GitHub.
 3. Core developers submit for reviews **Architecture Design Records (ADR)**.
 4. Once approved, the **SCRUM master** proposes a *development plan* (on github), with follow-up on GitHub and/or in meetings.
-5. **Tasks** are written. Coding starts. Anyone in the developers' pool can take up (or be asked to take up) any of the tasks.
+5. **Tasks** are written. Coding starts. Anyone in the developers' pool can take up (or asked to take up) any of the tasks.
 6. Follow-ups in [this board](https://github.com/orgs/DIRACGrid/projects/30/views/1), 2-weeks-long sprints. Checkpoint meetings every Thursday.
 7. System tests can be done on the [DiracGrid certification setup](https://github.com/DIRACGrid/DIRAC/wiki/Certifications).
+
+
+
+---
+layout: section
+color: cyan-light
+title: Dirac(X) and CMS
+---
+
+# DiracX and CMS
+
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: CMS_process
+---
+
+:: title ::
+
+# The process of "getting together" (simplified)
+
+:: content ::
+
+1. CMS started reviewing WMAgent, DIRAC and Panda back in October 2024
+2. The review concluded (Q1/2026) that selected parts of DiracX would be used to replace WMAgent (with a plan B)
+3. The [Scientific Workflow Management Cross-Experiment Retreat at the LPC](https://indico.fnal.gov/event/73933/) (13-15 May 2026) cemented that decision, and technical discussions started among developers
+4. [DiracX July's hackathon](https://indico.cern.ch/event/1668629/) welcomed the participation of several CMS experts
+5. CMS developers regularly participate in DiracGrid developers' meetings and discussions
+
+
+---
+layout: section
+color: gray-light
+title: CMS_coding
+---
+
+
+![PRs](/public/images/stack_prs.png)
+
+![issues](/public/images/stack_issues.png)
+
+---
+layout: top-title
+color: gray-light
+align: cm
+title: CMScontribs
+---
+
+:: title ::
+
+# CMS contributions up to now
+
+:: content ::
+
+plots
 
 
 
@@ -534,15 +586,31 @@ title: DevsStatus
 
 :: title ::
 
-# Today's developments status:
+# Today's developments status
+
+:: content ::
+
+While there are currently several commits to the repositories, the bulk of "interesting" developments (especially for CMS) are on-hold.
+=======
 # ADRs for the transformation system
 
 :: content ::
 
+- The design for the future production/workflow system took long time but it's finally ready for review.
 
-While there are currently several commits to the repositories, the bulk of "interesting" developments (especially for CMS) are on-hold.
 
-- The design for the future production/workflow system took a long time but it's finally ready for review.
+---
+layout: top-title
+color: gray-light
+align: cm
+title: ADRs
+---
+
+:: title ::
+
+# Concepts as per ADR
+
+:: content ::
 
 The **workflow/production/transformation system** has been (for the past months) and will keep being (for the months to come) the subject of the development process. Right now, we are waiting for Architecture Design Records describing it.
 
@@ -587,7 +655,7 @@ All of them have been the result of many weeks of work.
 
 **Main architects**: *Christopher Burr* and *Christophe Haen*.
 
-In the next slides I will go through a few **notable points**
+In the next slides I will go through few **notable points**
 
 ---
 layout: top-title
@@ -615,7 +683,7 @@ For this presentation I will mostly cover this one. The specifics live in the fi
 
 <br>
 
-The DiracX Transformation System covers the ground of two DIRAC systems (the Transformation System and the Production System) as well as the "job" part of the workload management system.
+The DiracX Transformation System covers the ground of two DIRAC systems (the Transformation System and the Production System) as well as "job" part of the workload management system. 
 
 ---
 layout: top-title
@@ -670,7 +738,7 @@ title: ADR2-3-1
 | Concept                                         | Term                       | One-line definition                                                                                                                             |
 | ----------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | Stage of a campaign                             | **Transformation**         | Applies one operation to a pool of inputs, in units of parcels. **Compute Transformation** parcels become jobs                                                                                  |
-| Unit of processable input                       | **Input**                  | Usually a file (LFN), possibly a fraction of one ("Lumi section"), possibly not a file at all (a seed, a parameter set)                                          |
+| Unit of processable input                       | **Input**                  | Usually a file (LFN), possibly a fraction of one, possibly not a file at all (a seed, a parameter set)                                          |
 | Dispatched unit of work                         | **Parcel**                 | An immutable, non-retryable unit of dispatched work: a user job, or a bundle of transformation inputs                                           |
 | Compute execution                               | **Job**                    | A CWL process run through the DiracX job wrapper                                                                                                |
 | Recipe for one job                              | **Process**                | A content-addressed CWL `Process`: a `CommandLineTool` or a `Workflow` (see DX-ADR-007)                                                         |
@@ -708,23 +776,10 @@ title: ADR3
 
 :: content ::
 
-Describes how compute **parcels** are executed by pluggable **compute backends**.
+Describes t
 
-<AdmonitionType type='note' >
-DIRAC never considered having different compute backends. The requirement came from CMS.
-DiracX is now using this concept to ease the transition from DIRAC, as the DIRAC WMS will be an implementation of a compute backend like HTCondor.
-</AdmonitionType>
-
-<br>
-
-Example of possible **backends**:
-
-- The DiracX **native pilot** workload system;
-- a **push-style remote** backend for resources that cannot run pilots or call back (HPC, restricted sites), where work is pushed out and outcomes must be pulled;
-- **HTCondor** glidein submission (the CMS model);
-- a **legacy-DIRAC** bridge during migration;
-- a **recovery** pseudo-backend that lets a partially-failed parcel register the output it *did* produce (CMS input).
-
+DIRAC never considered to have different compute backends. The requirement came from CMS.
+Diracx is now using this concept for easing the transition from DIRAC, as the DIRAC WMS will be an implementation of compute backend like HTCondor.
 
 ---
 layout: top-title
@@ -741,11 +796,12 @@ title: ADR4
 
 :: content ::
 
-DX-ADR-004 describes the database schema that would be used to hold all information for the Transformation System. This is optimized for MySQL/MariaDB.
+DX-ADR-004 describes the database schema that would be used to hold all Information for the Transformation System, which is optimized for MySQL/MariaDB.
 
-DX-ADR-005 describes the all-important state machines of workgraphs, transformations, inputs and parcels. 
+DX-ADR-005 describes the all-important State machines. 
 
-DX-ADR-006 describes how to extend the Transformation System core. Everything experiment-specific, from how inputs are found and grouped to what counts as a finished campaign, lives in extensions.
+DX-ADR-006 ...
+
 
 ---
 layout: top-title
@@ -760,98 +816,39 @@ title: ADR7
 
 :: content ::
 
-Everything DiracX executes is described in CWL v1.2: a user job, a workgraph, and each transformation inside it are all the same kind of document.
-DiracX-specific information travels in hints under the `dirac:` namespace
-
+Describes the CWL ... which is the central piece of description for both the workflows describing the workgraph and the jobs. 
 
 ```mermaid
-%%{init: { 'theme': 'default' }}%%
 flowchart LR
-    WG["`**CWL Workflow**
-    (Workgraph)`"]
-    TS["`**The magic TS box**`"]
-
-    subgraph Jobs["`**CWL Workflows (parcels)**`"]
-        J1["`**CWL Workflow**
-        job 1`"]
-        J2["`**CWL Workflow**
-        job 2`"]
-        Jn["`**CWL Workflow**
-        job n`"]
-    end
-
-    style WG fill:#eef,stroke:#88c,stroke-width:3px,color:#000
-    style TS fill:#f90,stroke:#c60,stroke-width:3px,color:#000
-    style Jobs fill:none,stroke:#aaa,stroke-dasharray: 5 5,color:#000
-    style J1 fill:#bbf,stroke:#88c,stroke-width:2px,color:#000
-    style J2 fill:#bbf,stroke:#88c,stroke-width:2px,color:#000
-    style Jn fill:#bbf,stroke:#88c,stroke-width:2px,color:#000
-
-    WG -->|describes| TS
-    TS -->|dispatches| J1
-    TS -->|dispatches| J2
-    TS -->|dispatches| Jn
+    B(CWL Workflow describing the Workgraph)
+    B --> C{The magic TS box}
+    C -->|1| D[CWL workflow describing job 1]
+    C -->|2| E[CWL workflow describing job 2]
+    C -->|n| F[CWL workflow describing job n]
 ```
-
-
----
-layout: top-title-two-cols
-color: gray-light
-align: cm-lm-lm
-title: CWL
-columns: is-5
----
-
-:: title ::
-
-# What is CWL?
-
-:: left ::
-
-[**Common Workflow Language**](https://www.commonwl.org) is an open standard for describing how to run command line tools and connect them to create workflows.
-
-- Tools and workflows described using CWL are **portable** across a variety of platforms
-- Easy to **scale** complex data analysis workflows from a single laptop to cluster, cloud, and HPC environments
-- **Free and open** standards with community-driven governance
-- Enables **reusability and reproducibility** of scientific workflows
-
-:: right ::
-
-<img src="/public/images/CWL-Logo-HD-cropped2.png" class="mx-auto w-full"> </img>
-
-
-- Vendor-neutral, multi-organization working group. Used by projects across life sciences, astronomy, and beyond
-- Supported by an ecosystem of tools
-
 
 ---
 layout: top-title
 color: gray-light
 align: cm
-title: cwl_engagement
+title: ADR7-2
 ---
 
 :: title ::
 
-# Engagement in CWL
+# DX-ADR-007: CWL specification
 
 :: content ::
 
-We are engaging in the CWL community. A few examples:
+<div class="flex justify-center gap-4">
+  <img src="/public/images/CWL1.png" class="w-1/2 object-contain" />
+  <img src="/public/images/CWL2.png" class="w-1/4 object-contain" />
+  <img src="/public/images/CWL3.png" class="w-1/4 object-contain" />
+</div>
 
-[CWL founder commenting on our issues](https://github.com/DIRACGrid/diracx/issues/858) or [reviewing our pull requests](https://github.com/DIRACGrid/dirac-cwl/pull/40).
-
-<br>
-
-We are also contributing directly to CWL, for example:
-
-Ryun and Alexandre (LHCb) [contributing to cwltool](https://github.com/common-workflow-language/cwltool/pull/2302) and [to cwl-utils](https://github.com/common-workflow-language/cwl-utils/pull/446) and [to the schema](https://github.com/common-workflow-language/schema_salad/pull/1064)
-
-Natthan (CTAO) [opening issue and pull requests](https://github.com/search?q=org%3Acommon-workflow-language+author%3Anatthan-pigoux&type=issues)
-
-<br>
-
-In general, we have seen **very good support from CWL**.
+<SpeechBubble position="t" color='light-red' shape="round"  v-drag="[300,410,440,130]">
+  Main involvements up to now: LHCb, CTAO. CMS should get directly involved here ASAP (now, effectively).
+</SpeechBubble>
 
 
 ---
@@ -867,16 +864,12 @@ title: next
 
 :: content ::
 
-We put everything together in a *playground* (next "slide") in javascript.
-
-<br>
-<br>
-
+We put everything together in a playground (next "slide") in javascript
 
 Goals:
-- Visualization of how the Transformation System "transforms" a CWL workgraph into Transformations, parcels, files.
-- Education (part of the documentation deployed at [diracx.diracgrid.org](https://diracx.diracgrid.org/en/latest/)).
-- Eventually, will likely be part of the way the whole system is exposed to consumers.
+- education (part of the documentation deployed at [diracx.diracgrid.org](https://diracx.diracgrid.org/en/latest/))
+- visualization
+- eventually, 
 
 ---
 layout: iframe
@@ -899,7 +892,7 @@ title: next
 
 :: content ::
 
-- All the ADRs will be submitted for review tomorrow (as Pull Requests on the DiracX repo). DiracGrid admins have already been warned.
+- All the ADRs will be submitted for review tomorrow (as Pull Requests on the DiracX repo). Diracgrid admins have been already warned.
 - The review needs to conclude at the [Dirac(X) workshop](https://indico.cern.ch/e/duw12) (13-16 October).
 - From there on, the SCRUM process will proceed as usual.
 - The workshop will serve as an occasion to iron the last details, prepare a development plan, and maybe code a few of the tasks. 
@@ -917,12 +910,9 @@ title: notADR
 
 :: content ::
 
-At a minimum, we are missing:
+- The DiracX Data Management system, and/or relation with other data management system(s) (e.g. Rucio)
+- The DiracX pilot, and in general the DiracX WMS
 
-- The DiracX Data Management system, and/or relation with other data management system(s) (e.g. Rucio).
-- The DiracX pilot, and in general the DiracX WMS.
-- The DiracX job wrapper, from which we should probably inherit what CMS has been doing for long (a CMS-proposed ADR?).
-- How users (physicists) interface to the Transformation System (e.g. for analysis productions).
 
 ---
 layout: section
@@ -953,17 +943,17 @@ title: summary
 - DiracX is "the ne**X**t DIRAC incarnation", ensuring the future of the widely used DIRAC.
   - It will live together with DIRAC v9 for a while, until it will replace it completely
   - It's developed by a superset of the current DIRAC developers
-- CMS is now an integral part of the process
-- The "ne**X**t Big Thing" is the **Transformation System**
-  - ADRs up for review from tomorrow
-  - **Let's build it together**
+- CMS is now integral part of of the process
+- the "ne**X**t Big Thing" is the **Transformation System**
+  - ADRs are up for review
+  - Let's build it together
 
 
 ---
 layout: credits
 color: navy
 loop: true
-speed: 1.4
+speed: 1.0
 title: credits/people
 ---
 
@@ -978,10 +968,10 @@ title: credits/people
         Chris Burr <i>CERN, LHCb</i><br/>
         Christophe Haen <i>CERN, LHCb</i><br/>
         Alexandre Boyer <i>CERN, LHCb</i><br/>
-        Natthan Pigoux <i>LUPM (FR), CTAO</i><br/>
+        Natthan Piggoux <i>LUPM (FR), CTAO</i><br/>
         Cedric Serfon <i>Brookhaven National Laboratory (US), Belle2</i><br/>
         Ryunosuke O'Neil <i>CERN, LHCb</i><br/>
-        Daniela Bauer <i>Imperial college (UK), GridPP</i><br/>
+        Daniela Bauer <i>Imperial collegOe (UK), GridPP</i><br/>
         Simon Fayer <i>Imperial college (UK), GridPP</i><br/>
         Janusz Martyniak <i>Imperial college (UK), GridPP</i><br/>
         Xiaomei Zhang <i>Beijing, Inst. High Energy Phys. (CN), Juno</i><br/>
@@ -992,22 +982,22 @@ title: credits/people
         Heloise Joffe <i>IN2P3 (FR), France-Grilles</i><br/>
         Stella Maria Renucci <i>LUPM (FR), CTAO</i><br/>
         Mazen Ezzeddine <i>CPPM (FR), EGI</i><br/>
-        Loris Vankatwijk <i>LUPM (FR), CTAO</i><br/>
-        Alan Malta <i>Notre Dame university (US), CMS</i><br/>
-        Andrea Piccinelli <i>Notre Dame university (US), CMS</i><br/>
-        Valentin Kuznetsov <i>Cornell University (US), CMS</i><br/>
-        Marco Mascheroni <i>(US), University of California San Diego (US), CMS</i><br/>
-        Todor Ivanov <i>Notre Dame university (US), CMS</i><br/>
-        Francesco Brivio <i>(IT), Milano Bicocca University, CMS</i><br/>
-        Juraj Smiesko <i>(CERN), FCC</i><br/>
-        Benedikt Wach <i>(CERN), FCC</i><br/>
+        Loris vankatwijk <i>LUPM (FR), CTAO</i><br/>
+        Alan Malta<i>Notre Dame university (US), CMS</i><br/>
+        Andrea Piccinelli<i>Notre Dame university (US), CMS</i><br/>
+        Valentin Kuznetsov<i>Cornell University (US), CMS</i><br/>
+        Marco Mascheroni<i>(US), University of California San Diego (US), CMS</i><br/>
+        Todor Ivanov<i>Notre Dame university (US), CMS</i><br/>
+        Francesco Brivio<i>(IT), Milano Bicocca University, CMS</i><br/>
+        Juraj Smiesko<i>(CERN), FCC</i><br/>
+        Benedikt Wach<i>(CERN), FCC</i><br/>
     </div>
     <div class="grid-item text-right mr-4 col-span-1">
         <strong>Project lead</strong>
     </div>
     <div class="grid-item col-span-2">
         Federico Stagni <i>CERN, LHCb</i><br/>
-        Andrei Tsaregorodtsev <i>CPPM (FR), EGI, LHCb, Juno</i>
+        Andrei Tsaregorotsev <i>CPPM (FR), EGI, LHCb, Juno</i>
     </div>
 </div>
 
@@ -1016,11 +1006,15 @@ title: credits/people
 &nbsp;
 &nbsp;
 &nbsp;
+
+<div class="grid-item col-span-3 text-center mt-180px mb-auto font-size-1.5rem">
+    <strong>Questions?</strong>
+</div>
+
 ---
 layout: section
 color: cyan-light
-title: Questions
+title: Backup
 ---
 
-# Questions?
-
+# Backup
